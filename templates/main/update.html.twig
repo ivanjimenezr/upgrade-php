@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+    
+    {% for message in app.flashes('notice') %}
+
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+
+    {% endfor %}
+        <div class="col-md-6 offset-md-3">
+        <h3 class="mt-5 mb-5">Actualizar película</h3>
+        {{ form_start(form) }}
+            <div class="form-group mb-3">
+                {{ form_label(form.title, 'Título') }}
+                {{ form_widget(form.title,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group mb-3">
+                {{ form_label(form.content, 'Sinopsis') }}
+                {{ form_widget(form.content,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group mb-3">
+                {{ form_label(form.image, 'Imagen') }}
+                {{ form_widget(form.image,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group mb-3">
+                {{ form_label(form.imdb, 'Valoración') }}
+                {{ form_widget(form.imdb,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group mb-3">
+                {{ form_label(form.actors, 'Reparto') }}
+                {{ form_widget(form.actors,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group mb-3">
+                {{ form_label(form.director, 'Dirección') }}
+                {{ form_widget(form.director,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group mb-3">
+                {{ form_label(form.category, 'Género') }}
+                {{ form_widget(form.category,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-info mt-2 text-white">Actualizar</button>
+                <a href="#" class="btn btn-danger mt-2 text-white" onclick="history.back()">Cancelar</a>
+            </div>
+        {{ form_end(form) }}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

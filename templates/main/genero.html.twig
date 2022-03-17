@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<div class="container">
+
+<a class="btn btn-warning" href="{{ path('create') }}">Nueva película</a>
+<a class="btn btn-warning" href="{{ path('main') }}">Portada</a>
+
+    {# {% for message in app.flashes('notice') %}
+        <div class="alert alert-success mt-4 mb-b">
+            {{ message }}
+        </div>
+    {% endfor %} #}
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Título</th>
+        <th scope="col">Sinopsis</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Valoración</th>
+        <th scope="col">Reparto</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Género</th>
+        <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for data in list %}
+        <tr>
+        <th scope="row">{{ data.id }}</th>
+        <td>{{ data.title }}</td>
+        <td>{{ data.content }}</td>
+        <td><img src="{{ data.image }}" width="160"/></td>
+        <td>{{ data.imdb }}</td>
+        <td>{{ data.actors }}</td>
+        <td>{{ data.director }}</td>
+        <td>{{ data.category }}</td>
+        <td>
+            <a class="btn btn-warning" href="{{ path('update', {'id': data.id }) }}">Actualizar</a>
+            <a class="btn btn-danger" href="{{ path('delete', {'id': data.id }) }}">Borrar</a>    
+        </td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table>
+</div>
+{% endblock %}
